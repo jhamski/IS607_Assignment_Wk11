@@ -1,0 +1,21 @@
+---
+title: "Map of English Names"
+author: "J. Hamski"
+date: "April 17, 2015"
+output: html_document
+---
+
+```{r}
+library(RCurl)
+library(jsonlite)
+library(XML)
+library(magrittr)
+library(dplyr)
+```
+
+```{r}
+tables <- readHTMLTable("http://surnames.behindthename.com/top/lists/england-wales/1991", header = TRUE, stringsAsFactors = FALSE)
+
+```
+
+

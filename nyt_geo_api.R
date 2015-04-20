@@ -6,7 +6,7 @@ library(jsonlite)
 library(XML)
 library(magrittr)
 
-key <- scan("geo_key.txt", what="character")
+key <- scan("geo_key.txt", what="charsacter")
 
 # Example from dev page: 
 # Query to return up to 20 geocodes of feature_class P (populated) in the United States with population greater than 50,000 people.
@@ -19,3 +19,9 @@ response <- query1 %>%
 pop50K <- as.data.frame(response[5])
 pop50K$results.concept_name
 str(pop50K$results.geocode)
+
+nameCheck <- "Cleveland"
+query2 <- paste("http://api.nytimes.com/svc/semantic/v2/geocodes/query.json?feature_class=P&name=", nameCheck, "&api-key=",key, sep="")
+response2 <- query2 %>% 
+  getURL() %>% 
+  fromJSON() 
